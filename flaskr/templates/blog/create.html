@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Recipe{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name" value="{{ request.form['name'] }}" required>
+    <label for="rcp_ingredients">Ingredients</label>
+    <input name="rcp_ingredients" id="rcp_ingredients" value="{{ request.form['rcp_ingredients'] }}" required>
+    <label for="text">Text</label>
+    <input name="text" id="text" value="{{ request.form['text'] }}" required>
+    <label for="rating">Rating</label>
+    <input name="rating" id="rating" value="{{ request.form['rating'] }}">
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

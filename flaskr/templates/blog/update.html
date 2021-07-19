@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ recipe['name'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name"
+      value="{{ request.form['name'] or recipe['name'] }}" required>
+    <label for="rcp_ingredients">Ingredients</label>
+    <input name="rcp_ingredients" id="rcp_ingredients"
+      value="{{ request.form['rcp_ingredients'] or recipe['rcp_ingredients'] }}">
+    <label for="text">Text</label>
+    <input name="text" id="text"
+      value="{{ request.form['text'] or recipe['text'] }}">
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('blog.delete', id=recipe['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}
